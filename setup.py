@@ -13,7 +13,7 @@ setuptools.setup(
         'pyodbc',
         'requests',
         'selenium',
-        'seleniumrequests',
+        'selenium-requests',
         'sqlalchemy'
     ]
 )
