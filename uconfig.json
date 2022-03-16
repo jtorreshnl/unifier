@@ -1,0 +1,42 @@
+{
+    "tokens": [
+        {
+            "env": "stage",
+            "value": "0123456789"
+        },
+        {
+            "env": "prod",
+            "value": "0123456789"
+        }
+    ],
+    "base_urls": [
+        {
+            "env": "stage",
+            "value": "https://unifier.oraclecloud.com/company/stage"
+        },
+        {
+            "env": "prod",
+            "value": "https://unifier.oraclecloud.com/company"
+        }
+    ],
+    "environment": [
+        {
+            "name": "http_proxy",
+            "value": "http://username:password@proxy:8080"
+        },
+        {
+            "name": "https_proxy",
+            "value": "https://username:password@proxy:8080"
+        }
+    ],
+    "login": {
+        "username": "username",
+        "password": "password"
+    },
+    "portal_url": "https://unifier.oraclecloud.com/company/cloud/p/portal",
+    "username": "System Integration",
+    "chromedriver": "C:/chromedriver.exe",
+    "log": "C:/Logs",
+    "engine": "mssql+pyodbc://@localhost/unifier?driver=SQL+Server",
+    "connection": "Driver={SQL Server};Server=localhost;Database=unifier;Trusted_Connection=yes;"
+}
