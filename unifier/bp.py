@@ -77,7 +77,7 @@ def create_record(self, project_number, bpname, data, record_no=None, workflow_n
         },
         'data': [{}]
     }
-    if not username: input_['options']['workflow_details']['user_name'] = self.user_name
+    if not username: input_['options']['workflow_details']['user_name'] = self.username
     if record_no: input_['data'][0]['record_no'] = record_no
     for key, value in data.items():
         input_['data'][0][key] = value
