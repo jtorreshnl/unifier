@@ -59,7 +59,7 @@ def read_record_attachments(self, project_number, bpname, record_no):
     }
     return requests.get(url=url, params=params, headers=self.headers)
 
-def create_record(self, project_number, bpname, data, record_no=None, workflow_name=None, action_name=None, user_name=None):
+def create_record(self, project_number, bpname, data, record_no=None, workflow_name=None, action_name=None, username=None):
     ''' Create a record in a specified shell.
 
     A workflow and action can be passed, and the record will be created
@@ -72,12 +72,12 @@ def create_record(self, project_number, bpname, data, record_no=None, workflow_n
             'workflow_details': {
                 'workflow_name': workflow_name,
                 'action_name': action_name,
-                'user_name': user_name
+                'user_name': username
             }
         },
         'data': [{}]
     }
-    if not user_name: input_['options']['workflow_details']['user_name'] = self.user_name
+    if not username: input_['options']['workflow_details']['user_name'] = self.user_name
     if record_no: input_['data'][0]['record_no'] = record_no
     for key, value in data.items():
         input_['data'][0][key] = value
