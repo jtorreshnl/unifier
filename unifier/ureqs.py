@@ -41,7 +41,8 @@ class UnifierRequest:
         set_chromedriver,
         set_log_path,
         set_engine,
-        set_connection
+        set_connection,
+        write_log
     )
 
     from unifier.bp import (
