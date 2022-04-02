@@ -4,15 +4,53 @@ import os
 import requests
 import zipfile
 
-def read_records(self, project_number, bpname):
+def read_records(self, project_number, bpname, record_fields=None, lineitem_fields=None, filter_criteria=None, join=None):
     ''' Read all records in a specified shell.
 
+    The returned values can be specified in the record_fields and
+    lineitem_fields parameters, where each value is semicolon separated. The
+    format of boths parameters is as follows:
+
+    record_fields = 'uuu_creation_date;creator_id;record_no'
+
+    The results can be filtered by passing a list of dictionaries, such that
+    each dictionary is a filter. The format of each dictionary is as follows:
+
+    filter_criteria = [{
+        'field': 'uuu_creation_date',
+        'value': '01-01-2022',
+        'value2': '01-31-2022,
+        'condition_type': 'range'
+    }, {
+        'field': 'creator_id',
+        'value': 'System Integration',
+        'condition_type': 'eq'
+    }]
     '''
     url = f'{self.base_url}/ws/rest/service/v1/bp/records/{project_number}'
     input_ = {
         'bpname': bpname,
-        'lineitem': 'yes'
+        'lineitem': 'yes',
     }
+    if record_fields:
+        input_['record_fields'] = record_fields
+    if lineitem_fields:
+        input_['lineitem_fields'] = lineitem_fields
+    if filter_criteria:
+        input_['filter_criteria'] = {
+            'join': 'and',
+            'filter': []
+        }
+        if join:
+            input_['filter_criteria']['join'] = join
+        for d in filter_criteria:
+            input_['filter_criteria']['filter'].append({
+                'field': d['field'],
+                'value': d['value'],
+                'condition_type': d['condition_type']
+            })
+            if 'value2' in d:
+                input_['filter_criteria']['filter'][-1]['value2'] = d['value2']
     return requests.post(url=url, json=input_, headers=self.headers)
 
 def read_record(self, project_number, bpname, record_no):
