@@ -100,6 +100,10 @@ class UnifierRequest:
         delete_record_attachment
     )
 
+    from unifier.sdm import (
+        read_documents_content
+    )
+
     from unifier.sudr import (
         read_udrs_metadata,
         delete_udr
