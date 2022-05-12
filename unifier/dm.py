@@ -17,6 +17,15 @@ def read_folder(self, projectnumber, parentpath, nodetype=None):
     }
     return requests.get(url=url, params=params, headers=self.headers)
 
+def read_document(self, file_id):
+    ''' Read a single document by file id.
+
+    read_folder() can be called first to generate the file ids. Subsequently,
+    this function can be called to get a specific file.
+    '''
+    url = f'{self.base_url}/ws/rest/service/v1/dm/file/download/{file_id}'
+    return requests.get(url=url, headers=self.headers)
+
 def read_documents(self, parentpath, projectnumber=None, iszip='yes'):
     ''' Read all documents in a specified directory.
 
