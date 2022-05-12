@@ -61,7 +61,9 @@ It is important to note that only two key value pairs are required in the config
 |Business Process|update_record_attachment|
 |Business Process|delete_record_attachment|This method uses seleniumrequests and needs the Unifier file id.|
 |Document Manager|read_folder|
+|Document Manager|read_document|
 |Document Manager|read_documents|Documents and folder structure are returned as zip file bytes.
+|Document Manager|read_documents_content|This method uses seleniumrequests to perform a content search.|
 |Document Manager|create_folder|
 |Document Manager|create_abspath|If folders do not exist in the abspath, they will be created.|
 |Document Manager|create_document|
