@@ -2,7 +2,7 @@ import json
 import os
 import requests
 
-def read_folders(self, projectnumber, parentpath, nodetype=None):
+def read_folder(self, projectnumber, parentpath, nodetype=None):
     ''' Read the folders or files in a specified directory.
 
     The parentpath is the name of the folder, e.g. '/05 Drawings'.

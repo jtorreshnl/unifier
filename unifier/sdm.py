@@ -8,7 +8,7 @@ def read_documents_content(self, projectnumber, content):
     '''
     if not self.driver:
         raise Exception('Call create_sinstance() to initialize the driver.')
-    res = self.read_folders(
+    res = self.read_folder(
         projectnumber=projectnumber,
         parentpath='/'
     )
