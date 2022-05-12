@@ -56,6 +56,7 @@ class UnifierRequest:
 
     from unifier.dm import (
         read_folder,
+        read_document,
         read_documents,
         create_folder,
         create_abspath,
