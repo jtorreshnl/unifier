@@ -1,4 +1,4 @@
-def read_documents_content(self, projectnumber, content):
+def read_documents_content(self, projectnumber, parentpath, content):
     ''' Delete an attachment for a specified record.
 
     The calling function must first call create_sinstance(), then
@@ -10,7 +10,7 @@ def read_documents_content(self, projectnumber, content):
         raise Exception('Call create_sinstance() to initialize the driver.')
     res = self.read_folder(
         projectnumber=projectnumber,
-        parentpath='/'
+        parentpath=parentpath
     )
     try:
         projectid = res.json()['data'][0]['project_id']
