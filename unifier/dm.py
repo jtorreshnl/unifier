@@ -48,7 +48,7 @@ def read_documents(self, parentpath, projectnumber=None, iszip='yes'):
     if projectnumber: params['projectnumber'] = projectnumber
     return requests.get(url=url, params=params, headers=self.headers)
 
-def create_folder(self, projectnumber, Path, Name, Owner):
+def create_folder(self, projectnumber, Path, Name, Owner=None):
     ''' Create a folder at the specified path.
 
     The owner of the folder is inherited, such that it is set equal to the
@@ -57,9 +57,9 @@ def create_folder(self, projectnumber, Path, Name, Owner):
     url = f'{self.base_url}/ws/rest/service/v1/dm/folder/create'
     data = [{
         'Path': Path,
-        'Name': Name,
-        'Owner': Owner
+        'Name': Name
     }]
+    if Owner is not None: data[0]['Owner'] = Owner
     input_ = {
         'projectnumber': projectnumber,
         'data': json.dumps(data)
@@ -82,7 +82,7 @@ def create_abspath(self, abspath, projectnumber=None, sep='/'):
         for j in range(i + 1):
             curr = values[j]
             path += f'/{curr}'
-        res = self.read_folders(
+        res = self.read_folder(
             projectnumber=projectnumber,
             parentpath=path,
             nodetype='Folder'
