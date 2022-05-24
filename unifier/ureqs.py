@@ -67,6 +67,7 @@ class UnifierRequest:
     from unifier.ds import (
         read_data_element,
         read_data_definition,
+        create_data_element,
         update_data_definition_data_set
     )
 
