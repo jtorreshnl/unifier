@@ -70,6 +70,7 @@ It is important to note that only two key value pairs are required in the config
 |Document Manager|update_folder|
 |Data Structure|read_data_element|
 |Data Structure|read_data_definition|
+|Data Structure|create_data_element|
 |Data Structure|update_data_definition_data_set|
 |User-Defined Report|read_udr|
 |User-Defined Report|read_udr_formatted|The udr is returned in a pandas DataFrame.|
