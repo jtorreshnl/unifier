@@ -28,6 +28,20 @@ def read_data_definition(self, type='Basic', name=None):
     }
     return requests.get(url=url, params=params, headers=self.headers)
 
+def create_data_element(self, data_element, data_definition, form_label):
+    ''' Create a data element.
+
+    '''
+    url = f'{self.base_url}/ws/rest/service/v1/ds/data-elements'
+    input_ = {
+        'data': [{
+            'data_element': data_element,
+            'data_definition': data_definition,
+            'form_label': form_label
+        }]
+    }
+    return requests.post(url=url, json=input_, headers=self.headers)
+
 def update_data_definition_data_set(self, name, data_set):
     ''' Update a data definition.
 
