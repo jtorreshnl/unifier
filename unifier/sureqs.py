@@ -1,5 +1,9 @@
 import re
 
+from selenium import (
+    webdriver
+)
+
 from seleniumrequests import (
     Chrome
 )
@@ -23,7 +27,12 @@ def create_sinstance(self):
 
     After use, call terminate_sinstance().
     '''
-    self.driver = Chrome(self.chromedriver)
+    if self.chrome_binary_location:
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.binary_location = self.chrome_binary_location
+        self.driver = Chrome(self.chromedriver, chrome_options=chrome_options)
+    else:
+        self.driver = Chrome(self.chromedriver)
     self.driver.get(self.portal_url)
     el = get_element_by_id_ext(self.driver, 'idcs-signin-basic-signin-form-username')
     el.send_keys(self.ulogin['username'])
@@ -47,9 +56,10 @@ def create_sinstance(self):
         if target in el.get_attribute('alt'):
             el.click()
     self.driver.switch_to.window(self.driver.window_handles[1])
-    wait = get_element_by_id_ext(self.driver, 'openTabsBtn')
+    wait = get_element_by_id_ext(self.driver, 'openTabsBtn', timeout=20)
     self.set_suuref()
     self.set_sutoken()
+
 
 def get_suuref(self):
     ''' Get the value of suuref.
