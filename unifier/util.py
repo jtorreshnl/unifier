@@ -34,6 +34,7 @@ def load_config(self):
     self.set_portal_url()
     self.set_username()
     self.set_chromedriver()
+    self.set_chrome_binary_location()
     self.set_log_path()
     self.set_engine()
     self.set_connection()
@@ -124,6 +125,16 @@ def set_chromedriver(self):
     '''
     try:
         self.chromedriver = self.uconfig['chromedriver']
+    except:
+        pass
+    return
+
+def set_chromedriver(self):
+    ''' Set the location of the chromedriver.
+
+    '''
+    try:
+        self.chrome_binary_location = self.uconfig['chrome_binary_location']
     except:
         pass
     return
