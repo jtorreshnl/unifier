@@ -39,6 +39,7 @@ class UnifierRequest:
         set_portal_url,
         set_username,
         set_chromedriver,
+        set_chrome_binary_location,
         set_log_path,
         set_engine,
         set_connection,
