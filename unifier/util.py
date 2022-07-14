@@ -129,7 +129,7 @@ def set_chromedriver(self):
         pass
     return
 
-def set_chromedriver(self):
+def set_chrome_binary_location(self):
     ''' Set the location of the chromedriver.
 
     '''
