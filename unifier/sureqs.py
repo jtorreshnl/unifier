@@ -137,11 +137,12 @@ def terminate_sinstance(self):
     ''' Terminate the Selenium instance.
 
     Iterate through the list of active windows in a reverse order, closing each
-    window. This method is faster than calling driver.quit().
+    window. Then, call driver.quit() and reset object attributes.
     '''
     for i in range(len(self.driver.window_handles) -1, -1, -1):
         self.driver.switch_to.window(self.driver.window_handles[i])
         self.driver.close()
+    self.quit()
     self.driver = None
     self.suuref = None
     self.sutoken = None
