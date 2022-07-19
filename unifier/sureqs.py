@@ -152,7 +152,7 @@ def terminate_sinstance(self):
     for i in range(len(self.driver.window_handles) -1, -1, -1):
         self.driver.switch_to.window(self.driver.window_handles[i])
         self.driver.close()
-    self.quit()
+    self.driver.quit()
     self.driver = None
     self.suuref = None
     self.sutoken = None
